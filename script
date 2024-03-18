@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         StoreEVAData
 // @namespace    https://github.com/Tsuna77/tampermonkey-eva-snif/
-// @version      2024-03-18
+// @version      2024-03-19
 // @description  try to take over the world!
 // @author       Tsuna and GrandMozeuR
 // @match        https://www.eva.gg/*
