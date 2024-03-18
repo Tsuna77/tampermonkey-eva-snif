@@ -1,0 +1,68 @@
+// ==UserScript==
+// @name         StoreData
+// @namespace    eva.gg
+// @version      2024-03-18
+// @description  try to take over the world!
+// @author       Tsuna and GrandMozeuR
+// @match        https://www.eva.gg/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
+// @grant        none
+// ==/UserScript==
+
+(async function() {
+    'use strict';
+
+    // Your code here..
+
+    var sendData = function(data){
+        fetch("https://eva.tsuna.fr/"+data.displayName, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        });
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    let count = 0;
+    while (count < 2) {
+        console.log(`Attente de ${count} seconde(s)...`);
+        await sleep(1000); // Attendre pendant 1 seconde
+        count++;
+    }
+
+    var elementList = document.getElementsByClassName('StatisticCard-Value ff-gotham-medium text-uppercase lh-sm season-text');
+
+    var obj = {
+        nbGames : elementList.item(0).innerHTML,
+        nbVictories : elementList.item(1).innerHTML,
+        nbDefeat : elementList.item(2).innerHTML,
+        timePlayed : elementList.item(3).innerHTML,
+        nbKills : elementList.item(4).innerHTML,
+        nbDeath : elementList.item(5).innerHTML,
+        nbAssists : elementList.item(6).innerHTML,
+        maxDamage : elementList.item(7).innerHTML,
+        maxInARow : elementList.item(8).innerHTML,
+        maxDistance : elementList.item(9).innerHTML,
+        moyDistance : elementList.item(10).innerHTML
+    };
+    obj.kd = (Math.floor((obj.nbKills/obj.nbDeath)*100)/100).toFixed(2)
+
+    var elementListDisplayName = document.getElementsByClassName('display-4 ff-gotham-medium lh-sm text-white text-decoration-none');
+    obj.displayName = elementListDisplayName.item(0).children.item(0).innerHTML;
+
+    var elementListAccountName = document.getElementsByClassName('h5 ff-gotham-medium text-uppercase mb-0 text-light');
+    obj.accountName = elementListAccountName.item(0).innerHTML;
+
+    var elementListLvl = document.getElementsByClassName('season__experience h3 ff-gotham-medium text-uppercase mb-2');
+    obj.lvl = elementListLvl.item(0).innerHTML;
+
+    console.log(obj);
+
+    sendData(obj);
+
+})();
