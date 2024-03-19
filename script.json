@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         StoreEVAData
 // @namespace    https://github.com/Tsuna77/tampermonkey-eva-snif/
-// @version      2024-03-19
+// @version      2024-03-19-2
 // @description  try to take over the world!
 // @author       Tsuna and GrandMozeuR
-// @match        https://www.eva.gg/*
+// @match        https://www.eva.gg/fr-FR/profile/dashboard
 // @updateURL    https://raw.githubusercontent.com/Tsuna77/tampermonkey-eva-snif/main/script
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=efa.gg
 // @grant        none
@@ -30,7 +30,7 @@
     }
 
     let count = 0;
-    while (count < 2) {
+    while (count < 3) {
         console.log(`Attente de ${count} seconde(s)...`);
         await sleep(1000); // Attendre pendant 1 seconde
         count++;
