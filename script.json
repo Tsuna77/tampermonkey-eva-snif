@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         StoreEVAData
 // @namespace    https://github.com/Tsuna77/tampermonkey-eva-snif/
-// @version      2024-03-19-3
+// @version      2024-03-19-4
 // @description  try to take over the world!
 // @author       Tsuna and GrandMozeuR
 // @match        https://www.eva.gg/fr-FR/profile/dashboard
@@ -31,7 +31,7 @@
     }
 
     let count = 0;
-    while (count < 3) {
+    while (count < 4) {
         console.log(`Attente de ${count} seconde(s)...`);
         await sleep(1000); // Attendre pendant 1 seconde
         count++;
